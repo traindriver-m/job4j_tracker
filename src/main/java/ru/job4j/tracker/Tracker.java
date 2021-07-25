@@ -12,7 +12,7 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        Item rsl =null;
+        Item rsl = null;
         for (int index = 0; index < size; index++) {
             Item item = items[index];
             if (item.getId() == id) {
