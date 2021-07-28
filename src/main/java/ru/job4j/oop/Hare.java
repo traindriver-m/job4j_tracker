@@ -8,6 +8,6 @@ public class Hare {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 }

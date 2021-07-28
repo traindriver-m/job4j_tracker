@@ -8,6 +8,6 @@ public class Wolf {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 }
