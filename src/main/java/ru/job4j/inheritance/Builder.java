@@ -3,7 +3,7 @@ package ru.job4j.inheritance;
 public class Builder extends Engineer {
     private String specialization;
 
-    public Project makeProject(Plan plan){
-
+    public Project makeProject(Plan plan) {
+        return new Project();
     }
 }
