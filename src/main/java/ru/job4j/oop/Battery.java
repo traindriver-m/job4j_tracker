@@ -8,7 +8,7 @@ public class Battery {
     }
 
     public void exchange(Battery another) {
-        load = another.load + load;
-        another.load = 0;
+        another.load = another.load + this.load;
+        this.load = 0;
     }
 }
