@@ -36,7 +36,7 @@ public class Item {
         this.name = name;
     }
 
-    public String getCreated(DateTimeFormatter formatter) {
-        return created.format(formatter);
+    public LocalDateTime getCreated() {
+        return created;
     }
 }
