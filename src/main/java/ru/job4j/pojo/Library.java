@@ -8,8 +8,7 @@ public class Library {
         Book history = new Book("History of Russia", 470);
         Book[] books = new Book[]{biblia, code, bukvary, history};
 
-        for (int index = 0; index < books.length; index++) {
-            Book book = books[index];
+        for (Book book : books) {
             System.out.println(book.getName() + " - " + book.getQuantity() + " pages.");
         }
 
@@ -17,15 +16,13 @@ public class Library {
         books[0] = books[3];
         books[3] = temp;
 
-        for (int index = 0; index < books.length; index++) {
-            Book book = books[index];
+        for (Book book : books) {
             System.out.println(book.getName() + " - " + book.getQuantity() + " pages.");
         }
 
-        for (int index = 0; index < books.length; index++) {
-            if (books[index].getName().equals("Clean code")) {
-                Book book = books[index];
-                System.out.println(book.getName() + " - " + book.getQuantity() + " pages.");
+        for (Book value : books) {
+            if ("Clean code".equals(value.getName())) {
+                System.out.println(value.getName() + " - " + value.getQuantity() + " pages.");
             }
         }
     }
