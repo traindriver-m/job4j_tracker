@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
+import java.util.Arrays;
+
 public class Tracker {
+
     private final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
@@ -21,5 +24,29 @@ public class Tracker {
             }
         }
         return rsl;
+    }
+
+    public Item[] findAll() {
+        int size = 0;
+        Item[] itemWithoutNull = new Item[items.length];
+        for (Item item : items) {
+            if (item != null) {
+                itemWithoutNull[size] = item;
+                size++;
+            }
+        }
+        return Arrays.copyOf(itemWithoutNull, size);
+    }
+
+    public Item[] findByName(String key) {
+        int size = 0;
+        Item[] itemNames = new Item[items.length];
+        for (Item item : items) {
+            if (item != null && key.equals(item.getName())) {
+                itemNames[size] = item;
+                size++;
+            }
+        }
+        return Arrays.copyOf(itemNames, size);
     }
 }
