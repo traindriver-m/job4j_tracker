@@ -15,38 +15,38 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        Item rsl = null;
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
+    }
+
+    public Item[] findAll() {
+        return Arrays.copyOf(items, size);
+    }
+
+    public Item[] findByName(String key) {
+        int counter = 0;
+        Item[] itemNames = new Item[items.length];
         for (int index = 0; index < size; index++) {
-            Item item = items[index];
-            if (item.getId() == id) {
-                rsl = item;
+            if (key.equals(items[index].getName())) {
+                itemNames[index] = items[index];
+                counter++;
+            }
+        }
+        return Arrays.copyOf(itemNames, counter);
+    }
+
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int index = 0; index < size; index++) {
+            if (items[index].getId() == id) {
+                rsl = index;
                 break;
             }
         }
         return rsl;
     }
 
-    public Item[] findAll() {
-        int size = 0;
-        Item[] itemWithoutNull = new Item[items.length];
-        for (Item item : items) {
-            if (item != null) {
-                itemWithoutNull[size] = item;
-                size++;
-            }
-        }
-        return Arrays.copyOf(itemWithoutNull, size);
-    }
-
-    public Item[] findByName(String key) {
-        int size = 0;
-        Item[] itemNames = new Item[items.length];
-        for (Item item : items) {
-            if (item != null && key.equals(item.getName())) {
-                itemNames[size] = item;
-                size++;
-            }
-        }
-        return Arrays.copyOf(itemNames, size);
-    }
+//    public boolean replace(int id, Item item) {
+//
+//    }
 }
