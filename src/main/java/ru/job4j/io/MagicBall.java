@@ -11,6 +11,8 @@ public class MagicBall {
         int answer = new Random().nextInt(3);
         if (answer == 1) {
             System.out.println("Нет.");
+        } else if (answer == 0) {
+            System.out.println("Да.");
         } else {
             System.out.println("Может быть.");
         }
