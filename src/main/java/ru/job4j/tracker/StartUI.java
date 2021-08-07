@@ -10,7 +10,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             showMenu();
-            System.out.println("Select: ");
+            System.out.print("Select: ");
             int select = Integer.parseInt(scanner.nextLine());
             if (select == 0) {
                 System.out.println("=== Create a new Item ====");
@@ -40,6 +40,15 @@ public class StartUI {
                     System.out.println("Заявка изменена успешно.");
                 } else {
                     System.out.println("Изменение заявки не удалось.");
+                }
+            } else if (select == 3) {
+                System.out.println("=== Delete item ===");
+                System.out.print("Enter id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                if (tracker.delete(id)) {
+                    System.out.println("Заявка успешно удалена.");
+                } else {
+                    System.out.println("Ошибка удаления заявки.");
                 }
             } else if (select == 6) {
                 run = false;
