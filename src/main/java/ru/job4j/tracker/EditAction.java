@@ -14,10 +14,9 @@ public class EditAction implements UserAction {
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
             System.out.println("Заявка успешно изменена");
-            return true;
         } else {
             System.out.println("Изменение заявки не удалось");
         }
-        return false;
+        return true;
     }
 }

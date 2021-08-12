@@ -15,10 +15,9 @@ public class FindByNameAction implements UserAction {
             for (Item item : items) {
                 System.out.println(item);
             }
-            return true;
         } else {
             System.out.println("Заявки с именем: " + name + " не найдены");
         }
-        return false;
+        return true;
     }
 }
