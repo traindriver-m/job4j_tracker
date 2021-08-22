@@ -45,17 +45,9 @@ public class ValidateInputTest {
     @Test
     public void whenNegativeNumber() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
-        Input in = new StubInput(new String[]{"-3", "0"});
+        Input in = new StubInput(new String[]{"-1"});
         ValidateInput input = new ValidateInput(out, in);
-        UserAction[] action = new UserAction[]{new ExitAction()};
-        new StartUI(out).init(input, tracker, action);
-        String ln = System.lineSeparator();
-        Assert.assertThat(out.toString(), is("Menu." + ln
-                + "0. Exit Program" + ln
-                + "Wrong input, you can select: 0 .. 0" + ln
-                + "Menu." + ln
-                + "0. Exit Program" + ln));
-
+        int selected = input.askInt("Select:");
+        assertThat(selected, is(-1));
     }
 }
