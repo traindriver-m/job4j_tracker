@@ -9,7 +9,7 @@ public class Engineer extends Profession {
         this.experience = experience;
     }
 
-    public Plan makePlan(Task task){
-return new Plan();
+    public Plan makePlan(Task task) {
+        return new Plan();
     }
 }
