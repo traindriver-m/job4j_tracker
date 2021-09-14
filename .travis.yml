@@ -18,3 +18,9 @@ notifications:
       - sergioparovozov@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
+
+env:
+
+  global:
+
+    - CODECOV_TOKEN="3bf80890-b3f5-43e8-a0af-c4d47ff3e0cd"
