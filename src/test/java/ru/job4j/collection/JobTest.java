@@ -61,7 +61,7 @@ public class JobTest {
         assertThat(rsl, lessThan(0));
     }
 
-    @Test // здесь решил задать одинаковые имена и проверить работу компараторов до конца.
+    @Test
     public void whenCompatorIncrByNameAndPrority() {
         Comparator<Job> cmpNamePriority = new JobIncrByName().
                 thenComparing(new JobIncrByPriority());

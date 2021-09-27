@@ -2,7 +2,6 @@ package ru.job4j.tracker;
 
 import java.util.Comparator;
 
-// возрастание
 public class SortByIncreaseItem implements Comparator<Item> {
     @Override
     public int compare(Item o1, Item o2) {
