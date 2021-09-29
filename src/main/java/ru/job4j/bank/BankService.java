@@ -51,12 +51,11 @@ public class BankService {
      * @return возвращает найденного пользователя или null если пользователь не найден
      */
     public User findByPassport(String passport) {
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                return user;
-            }
-        }
-        return null;
+        return users.keySet()
+                .stream()
+                .filter((e) -> e.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -64,17 +63,17 @@ public class BankService {
      *
      * @param passport  принимает данные паспорта для поиска пользователя
      * @param requisite принимает номер счета для поиска среди других возможных счетов пользователя
-     * @return возвращает найенный счет или null усли счет не найден
+     * @return возвращает найенный счет или null если счет не найден
      */
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user != null) {
-            List<Account> tempAccount = users.get(user);
-            for (Account acc : tempAccount) {
-                if (acc.getRequisite().equals(requisite)) {
-                    return acc;
-                }
-            }
+            return users.get(user)
+                    .stream()
+                    .filter((e) -> e.getRequisite().equals(requisite))
+                    .findFirst()
+                    .orElse(null);
+
         }
         return null;
     }
@@ -87,7 +86,7 @@ public class BankService {
      * @param destPassport  принимает паспортные данные пользователя
      *                      которому будет произведен перевод
      * @param destRequisite принимает реквизиты счёта на который будет производиться перевод
-     * @param amount принимает сумму которая будет переводиться со счета на счет
+     * @param amount        принимает сумму которая будет переводиться со счета на счет
      * @return возвращает информацию о результате операции типа: выполнена/не выполнена
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
