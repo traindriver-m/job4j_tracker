@@ -66,4 +66,29 @@ public class Vechicle {
 
         }
     }
+
+    @Override
+    public String toString() {
+        return "Vechicle {"
+                + "brand='" + brand + '\''
+                + ", type='" + type + '\''
+                + ", engine='" + engine + '\''
+                + ", weight=" + weight
+                + ", power=" + power
+                + ", speed=" + speed
+                + ", places=" + places
+                + '}';
+    }
+
+    public static void main(String[] args) {
+        Vechicle vechicle = new Builder().buildBrand("Toyota")
+                .buildEngine("4ZZ FE")
+                .buildPower(101)
+                .buildType("Sedan")
+                .buildSpeed(235)
+                .buildWeight(1385)
+                .buildPlaces(5)
+                .builder();
+        System.out.println(vechicle.toString());
+    }
 }
