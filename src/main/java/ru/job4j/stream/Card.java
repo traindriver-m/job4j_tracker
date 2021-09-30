@@ -13,10 +13,16 @@ public class Card {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return suit + " " + value;
+    }
+
     public static void main(String[] args) {
         Stream.of(Suit.values())
                 .flatMap(val -> Stream.of(Value.values())
-                        .map(s -> val + " " + s))
+                        .map(s -> new Card(val, s)))
+                .map(Card::toString)
                 .forEach(System.out::println);
     }
 }
