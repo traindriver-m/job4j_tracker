@@ -58,10 +58,6 @@ public class Item {
                 + '}';
     }
 
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -77,11 +73,7 @@ public class Item {
         if (name != null ? !name.equals(item.name) : item.name != null) {
             return false;
         }
-//        System.out.println("id equals: " + (id == item.id));
-//        System.out.println("name equals: " + name.equals(item.name));
-//        System.out.println("equals created: " + created.equals(item.created));
         return created != null ? created.equals(item.created) : item.created == null;
-//        return true;
     }
 
     @Override
