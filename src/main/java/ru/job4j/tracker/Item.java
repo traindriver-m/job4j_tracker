@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Item {
     private static final DateTimeFormatter FORMATTER =
@@ -10,7 +11,7 @@ public class Item {
 
     private int id;
     private String name;
-    private LocalDateTime created = LocalDateTime.now();
+    private LocalDateTime created = LocalDateTime.now().truncatedTo(ChronoUnit.MICROS);
 
     public Item() {
     }
@@ -61,4 +62,33 @@ public class Item {
         return created;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Item item = (Item) o;
+        if (id != item.id) {
+            return false;
+        }
+        if (name != null ? !name.equals(item.name) : item.name != null) {
+            return false;
+        }
+//        System.out.println("id equals: " + (id == item.id));
+//        System.out.println("name equals: " + name.equals(item.name));
+//        System.out.println("equals created: " + created.equals(item.created));
+        return created != null ? created.equals(item.created) : item.created == null;
+//        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (created != null ? created.hashCode() : 0);
+        return result;
+    }
 }
