@@ -9,6 +9,13 @@ import java.util.Properties;
 public class SqlTracker implements Store, AutoCloseable {
     private Connection connection;
 
+    public SqlTracker() {
+    }
+
+    public SqlTracker(Connection connection) {
+        this.connection = connection;
+    }
+
     public void init() {
         try (InputStream in = SqlTracker.class.getClassLoader()
                 .getResourceAsStream("app.properties")) {
@@ -23,10 +30,6 @@ public class SqlTracker implements Store, AutoCloseable {
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
-    }
-
-    public void setConnection(Connection connection) {
-        this.connection = connection;
     }
 
     @Override
